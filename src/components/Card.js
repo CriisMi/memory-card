@@ -2,6 +2,7 @@ const Card = (props) => {
   return (
     <div>
       <div
+        id={props.id}
         className="image"
         style={{
           backgroundColor: `${props.background}`,

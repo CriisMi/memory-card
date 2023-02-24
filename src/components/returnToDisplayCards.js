@@ -1,5 +1,8 @@
 const returnToDisplayCards = (cards, guessedCards) => {
   let numberList = [];
+  if (guessedCards.length === 10) {
+    return cards;
+  }
 
   do {
     let number = Math.floor(Math.random() * 10);
