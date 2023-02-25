@@ -1,31 +1,27 @@
 import { useEffect, useState } from "react";
 import CardsSelection from "./components/CardsSelection";
 import GameInfo from "./components/GameInfo";
+import "./App.css";
 
 function App() {
   const [score, setScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
-
   const [guessedCards, setGuessedCards] = useState([]);
+  const [playing, setPlaying] = useState(true);
 
   useEffect(() => {
-    const updateScore = (e) => {
-      let card = parseInt(e.target.id);
-      if (!isNaN(card)) {
-        if (!guessedCards.includes(card)) {
-          setGuessedCards((guessedCards) => [...guessedCards, parseInt(card)]);
-          setScore(score + 1);
-        } else {
-          console.log("end");
-        }
-      }
-    };
+    if (score > bestScore) {
+      setBestScore(score);
+    }
+  }, [score]);
 
-    document.addEventListener("click", updateScore);
-    return () => {
-      document.addEventListener("click", updateScore);
-    };
-  });
+  useEffect(() => {
+    setScore(0);
+    if (!playing) {
+      setPlaying(!playing);
+      setGuessedCards([]);
+    }
+  }, [playing]);
 
   return (
     <div className="App">
@@ -34,6 +30,9 @@ function App() {
         score={score}
         setScore={setScore}
         guessedCards={guessedCards}
+        setGuessedCards={setGuessedCards}
+        playing={playing}
+        setPlaying={setPlaying}
       />
     </div>
   );

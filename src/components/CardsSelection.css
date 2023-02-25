@@ -1,0 +1,9 @@
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.cards > li {
+  margin: 5px;
+}

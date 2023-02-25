@@ -1,33 +1,59 @@
 import Card from "./Card";
 import returnToDisplayCards from "./returnToDisplayCards";
+import "./CardsSelection.css";
 
 const CardsSelection = (props) => {
   let cards = [
-    { background: "red", title: "red", description: "redcard", key: "0" },
-    { background: "blue", title: "blue", description: "bluecard", key: "1" },
+    { background: "#92140C", title: "red", description: "Peen red", key: "0" },
     {
-      background: "yellow",
+      background: "#004777",
+      title: "blue",
+      description: "Indigo dye",
+      key: "1",
+    },
+    {
+      background: "#F5EE9E",
       title: "yellow",
-      description: "yellowcard",
+      description: "Vanilla",
       key: "2",
     },
-    { background: "black", title: "black", description: "blackcard", key: "3" },
     {
-      background: "orange",
+      background: "#191919",
+      title: "black",
+      description: "Eerie black",
+      key: "3",
+    },
+    {
+      background: "#faa916",
       title: "orange",
-      description: "orangecard",
+      description: "Orange",
       key: "4",
     },
-    { background: "green", title: "green", description: "green", key: "5" },
-    { background: "grey", title: "grey", description: "greycard", key: "6" },
-    { background: "pink", title: "pink", description: "pinkcard", key: "7" },
     {
-      background: "bisque",
-      title: "bisque",
-      description: "bisquecard",
+      background: "#3c896d",
+      title: "green",
+      description: "Viridian",
+      key: "5",
+    },
+    {
+      background: "#C8BFC7",
+      title: "grey",
+      description: "French gray",
+      key: "6",
+    },
+    { background: "#D496A7", title: "pink", description: "Puce", key: "7" },
+    {
+      background: "#420039",
+      title: "purple",
+      description: "Dark purple",
       key: "8",
     },
-    { background: "coral", title: "coral", description: "coralcard", key: "9" },
+    {
+      background: "#66C7F4",
+      title: "light blue",
+      description: "Light Sky Blue",
+      key: "9",
+    },
   ];
 
   let guessedCards = props.guessedCards;
@@ -41,12 +67,18 @@ const CardsSelection = (props) => {
         title={card.title}
         description={card.description}
         id={card.key}
+        score={props.score}
+        setScore={props.setScore}
+        guessedCards={guessedCards}
+        setGuessedCards={props.setGuessedCards}
+        playing={props.playing}
+        setPlaying={props.setPlaying}
       />
     </li>
   ));
   return (
     <div>
-      <ul>{listCards}</ul>
+      <ul className="cards">{listCards}</ul>
     </div>
   );
 };
